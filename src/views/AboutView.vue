@@ -6,8 +6,9 @@ const store = inject<ReturnType<typeof useQuestionsStore>>('store')
 </script>
 
 <template>
-  {{ store?.answersCount }}
   <div class="about">
+    {{ store?.answersCount }}
+
     <h1>here will be the qr</h1>
   </div>
 </template>

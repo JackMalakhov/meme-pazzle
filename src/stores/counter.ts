@@ -5,8 +5,8 @@ import type { QuestionsTypes } from '@/model/questions.types'
 export const useQuestionsStore = defineStore('questions', () => {
   const userAnswers = ref<QuestionsTypes | undefined>(undefined)
   const rightAnswers = ref<QuestionsTypes>({
-    q1: 'answer 1',
-    q2: 'answer 1',
+    q1: 'pakhlava',
+    q2: 'hotdog',
     q3: 'answer 1',
     q4: 'answer 1',
     q5: 'answer 1',

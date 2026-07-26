@@ -9,14 +9,14 @@ provide('store', store)
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="CONGRATULATIONS!" />
 
       <nav>
-        <RouterLink to="/">Questions</RouterLink>
-        <RouterLink to="/surprise">Surprise</RouterLink>
+        <RouterLink to="/">Викторина</RouterLink>
+        <RouterLink to="/surprise">Сюрприз</RouterLink>
       </nav>
     </div>
   </header>

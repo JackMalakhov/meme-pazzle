@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import CustomOption from './CustomOption.vue'
+import FoodIcon from './icons/iconFood.vue'
 import { inject, onMounted, ref, watch } from 'vue'
 import type { QuestionsTypes } from '../model/questions.types.ts'
 import type { useQuestionsStore } from '../stores/counter.ts'
@@ -54,13 +54,14 @@ watch(
 <template>
   <WelcomeItem id="question_1">
     <template #icon>
-      <DocumentationIcon />
+      <FoodIcon :active="!!form.q1" />
     </template>
-    <template #heading>step 1</template>
+    <template #heading>Как это называется?</template>
+    <img class="image" src="../assets/images/pahlava.png" alt="question 1" />
     <div class="options">
-      <CustomOption v-model="form.q1" value="answer 1" name="q1">answer 1</CustomOption>
-      <CustomOption v-model="form.q1" value="answer 2" name="q1">answer 2</CustomOption>
-      <CustomOption v-model="form.q1" value="answer 3" name="q1">answer 3</CustomOption>
+      <CustomOption v-model="form.q1" value="pakhvala" name="q1">Пахвала</CustomOption>
+      <CustomOption v-model="form.q1" value="pakhlava" name="q1">Пахлава</CustomOption>
+      <CustomOption v-model="form.q1" value="pokhlava" name="q1">Похвала</CustomOption>
     </div>
   </WelcomeItem>
 
@@ -68,11 +69,12 @@ watch(
     <template #icon>
       <ToolingIcon />
     </template>
-    <template #heading>step2</template>
+    <template #heading>На что она намекает?</template>
+    <img class="image" src="../assets/images/namek.png" alt="question 1" />
     <div class="options">
-      <CustomOption v-model="form.q2" value="answer 1" name="q2">answer 1</CustomOption>
-      <CustomOption v-model="form.q2" value="answer 2" name="q2">answer 2</CustomOption>
-      <CustomOption v-model="form.q2" value="answer 3" name="q2">answer 3</CustomOption>
+      <CustomOption v-model="form.q2" value="answer 1" name="q2">Пирожок с картошкой</CustomOption>
+      <CustomOption v-model="form.q2" value="magic-stick" name="q2">Волшебную палочку</CustomOption>
+      <CustomOption v-model="form.q2" value="hotdog" name="q2">Сосиску в тесте</CustomOption>
     </div>
   </WelcomeItem>
 
@@ -168,5 +170,8 @@ watch(
 .options {
   display: flex;
   gap: 10px;
+}
+.image {
+  max-width: 100%;
 }
 </style>
