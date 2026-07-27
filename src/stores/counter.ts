@@ -6,23 +6,31 @@ export const useQuestionsStore = defineStore('questions', () => {
   const openedPage = ref<'quiz' | 'surprise'>('quiz')
 
   const userAnswers = ref<QuestionsTypes | undefined>(undefined)
-  const rightAnswers = ref<QuestionsTypes>({
+  const rightAnswers = ref<Omit<QuestionsTypes, 'q9'> & { q9: string[] }>({
     q1: 'pakhlava',
     q2: 'hotdog',
     q3: 'pixies_que_sera_sera',
     q4: 'flirt_fail',
     q5: 'quakin',
     q6: 'aleksandr_3',
-    q7: 'answer 1',
-    q8: 'answer 1',
-    q9: 'answer 1',
+    q7: 'leviOsa',
+    q8: 'dvulichnost',
+    q9: ['charlidze', 'trusozhoriks', 'the_cutest_dog', 'all_variants'],
   })
   const answersCount = computed(
     () =>
-      Object.entries(rightAnswers.value).filter(
-        ([question, answer]) =>
-          (userAnswers.value ?? {})[question as keyof QuestionsTypes] === answer,
-      ).length,
+      Object.entries(rightAnswers.value).filter(([question, answer]) => {
+        const userAnswer = (userAnswers.value ?? {})[question as keyof QuestionsTypes]
+        if (userAnswer === undefined) {
+          return false
+        }
+        if (typeof answer === 'string') {
+          return userAnswer === answer
+        }
+        if (Array.isArray(answer)) {
+          return answer.includes(userAnswer)
+        }
+      }).length,
   )
 
   const updateUserAnswers = (answers: QuestionsTypes) => {

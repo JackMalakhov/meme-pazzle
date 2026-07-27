@@ -61,7 +61,7 @@ watch(
       <SupportIcon :active="!!form.q1" />
     </template>
     <template #heading>Как это называется?</template>
-    <img class="image spacer" src="../assets/images/pahlava.png" alt="question 1" />
+    <img class="image spacer" src="../assets/images/pahlava.png" alt="word" />
     <div class="options spacer">
       <CustomOption v-model="form.q1" value="pakhvala" name="q1">Пахвала</CustomOption>
       <CustomOption v-model="form.q1" value="pakhlava" name="q1">Пахлава</CustomOption>
@@ -74,7 +74,7 @@ watch(
       <SupportIcon :active="!!form.q2" />
     </template>
     <template #heading>На что она намекает?</template>
-    <img class="image spacer" src="../assets/images/namek.png" alt="question 1" />
+    <img class="image spacer" src="../assets/images/namek.png" alt="namek" />
     <div class="options spacer">
       <CustomOption v-model="form.q2" value="answer 1" name="q2"
         >На пирожок с картошкой</CustomOption
@@ -146,7 +146,7 @@ watch(
       <SupportIcon :active="!!form.q5" />
     </template>
     <template #heading>Как зовут спортсмена?</template>
-    <img class="image spacer" src="../assets/images/dog.jpeg" alt="question 1" />
+    <img class="image spacer" src="../assets/images/dog.jpeg" alt="dog" />
     <div class="options spacer">
       <CustomOption v-model="form.q5" value="quakin" name="q5">Геннадий Квакин</CustomOption>
       <CustomOption v-model="form.q5" value="bublik" name="q5">Александр Бублик</CustomOption>
@@ -158,7 +158,7 @@ watch(
       <SupportIcon :active="!!form.q6" />
     </template>
     <template #heading>Где мы встретились впервые?</template>
-    <img class="image spacer" src="../assets/images/wedding.jpeg" alt="question 1" />
+    <img class="image spacer" src="../assets/images/wedding.jpeg" alt="wedding" />
     <div class="options spacer">
       <CustomOption v-model="form.q6" value="kavaler_party" name="q6"
         >На анонимной встрече поклонников глухих кавалеров</CustomOption
@@ -175,36 +175,45 @@ watch(
     <template #icon>
       <SupportIcon :active="!!form.q7" />
     </template>
-    <template #heading>step 7</template>
-
+    <template #heading>Как все таки правильно?</template>
+    <img class="image spacer" src="../assets/images/leviosa.jpeg" alt="leviosa" />
     <div class="options spacer">
-      <CustomOption v-model="form.q7" value="answer 1" name="q7">answer 1</CustomOption>
-      <CustomOption v-model="form.q7" value="answer 2" name="q7">answer 2</CustomOption>
-      <CustomOption v-model="form.q7" value="answer 3" name="q7">answer 3</CustomOption>
+      <CustomOption v-model="form.q7" value="lEviosa" name="q7">Le&#769;viosa</CustomOption>
+      <CustomOption v-model="form.q7" value="leviOsa" name="q7">Levio&#769;sa</CustomOption>
+      <CustomOption v-model="form.q7" value="leviosA" name="q7">Leviosa&#769;</CustomOption>
     </div>
   </QuestionItem>
   <QuestionItem id="question_8">
     <template #icon>
       <SupportIcon :active="!!form.q8" />
     </template>
-    <template #heading>step 8</template>
-
+    <template #heading>Чем недовольна женщина слева?</template>
+    <img class="image spacer" src="../assets/images/dvulichnaya.jpeg" alt="women" />
     <div class="options spacer">
-      <CustomOption v-model="form.q8" value="answer 1" name="q8">answer 1</CustomOption>
-      <CustomOption v-model="form.q8" value="answer 2" name="q8">answer 2</CustomOption>
-      <CustomOption v-model="form.q8" value="answer 3" name="q8">answer 3</CustomOption>
+      <CustomOption v-model="form.q8" value="husband" name="q8"
+        >Вторая женщина увела у нее мужа</CustomOption
+      >
+      <CustomOption v-model="form.q8" value="food_prices" name="q8"
+        >Ценами на продукты</CustomOption
+      >
+      <CustomOption v-model="form.q8" value="dvulichnost" name="q8">Двуличностью</CustomOption>
     </div>
   </QuestionItem>
   <QuestionItem id="question_9">
     <template #icon>
       <SupportIcon :active="!!form.q9" />
     </template>
-    <template #heading>step 9</template>
-
+    <template #heading>Как его зовут?</template>
+    <img class="image spacer" src="../assets/images/charlie.jpeg" alt="charlie" />
     <div class="options spacer">
-      <CustomOption v-model="form.q9" value="answer 1" name="q9">answer 1</CustomOption>
-      <CustomOption v-model="form.q9" value="answer 2" name="q9">answer 2</CustomOption>
-      <CustomOption v-model="form.q9" value="answer 3" name="q9">answer 3</CustomOption>
+      <CustomOption v-model="form.q9" value="charlidze" name="q9">Чарлидзе Бабалидзе</CustomOption>
+      <CustomOption v-model="form.q9" value="trusozhoriks" name="q9">Трусожорикс</CustomOption>
+      <CustomOption v-model="form.q9" value="the_cutest_dog" name="q9"
+        >Самый милый песик в мире</CustomOption
+      >
+      <CustomOption v-model="form.q9" value="all_variants" name="q9"
+        >Все варианты верны</CustomOption
+      >
     </div>
   </QuestionItem>
   <div class="reset-buttons">
