@@ -7,7 +7,8 @@ defineProps<{
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>Some questions for you</h3>
+    <h3 class="dark-pink">Мариша с днем рождения! 😘🎉🥳</h3>
+    <h4 class="dark-pink">Ответь на несколько вопросов и получи сюрприз 🎁</h4>
   </div>
 </template>
 
@@ -24,7 +25,8 @@ h3 {
 }
 
 .greetings h1,
-.greetings h3 {
+.greetings h3,
+.dark-pink {
   text-align: center;
 }
 

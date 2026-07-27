@@ -10,9 +10,15 @@
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: rgb(206, 14, 174);
   transition: 0.4s;
   padding: 3px;
+}
+
+.dark-pink {
+  text-decoration: none;
+  color: rgb(156, 100, 147);
+  transition: 0.4s;
 }
 
 @media (hover: hover) {

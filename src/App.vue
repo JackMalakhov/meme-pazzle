@@ -20,10 +20,10 @@ onMounted(() => {
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <heading msg="QUIZ!" />
+      <heading msg="BIRTHDAY QUIZ!" />
 
       <nav>
-        <RouterLink to="/">Викторина</RouterLink>
+        <RouterLink to="/">Quiz</RouterLink>
         <RouterLink to="/surprise">Сюрприз</RouterLink>
       </nav>
     </div>
@@ -52,6 +52,7 @@ nav {
 
 nav a.router-link-exact-active {
   color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
 }
 
 nav a.router-link-exact-active:hover {
@@ -65,7 +66,7 @@ nav a {
 }
 
 nav a:first-of-type {
-  border: 0;
+  border-left: 0;
 }
 
 @media (min-width: 1024px) {

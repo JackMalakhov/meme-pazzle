@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WelcomeItem from './WelcomeItem.vue'
+import QuestionItem from './QuestionItem.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import CustomOption from './CustomOption.vue'
 import { inject, onMounted, ref, watch } from 'vue'
@@ -19,14 +19,22 @@ const initialValue = {
   q9: '',
 }
 
-const form = ref<QuestionsTypes>(initialValue)
+const form = ref<QuestionsTypes>({ ...initialValue })
+const restart = ref<boolean>(false)
+
 const updateStorage = (option: QuestionsTypes) => {
   const value = localStorage.getItem('questions')
-
   localStorage.setItem(
     'questions',
     JSON.stringify({ ...(value ? JSON.parse(value) : {}), ...option }),
   )
+}
+
+const resetStorage = () => {
+  localStorage.removeItem('questions')
+  store?.updateUserAnswers(initialValue)
+  form.value = { ...initialValue }
+  restart.value = false
 }
 
 onMounted(() => {
@@ -48,7 +56,7 @@ watch(
 </script>
 
 <template>
-  <WelcomeItem id="question_1">
+  <QuestionItem id="question_1">
     <template #icon>
       <SupportIcon :active="!!form.q1" />
     </template>
@@ -59,9 +67,9 @@ watch(
       <CustomOption v-model="form.q1" value="pakhlava" name="q1">Пахлава</CustomOption>
       <CustomOption v-model="form.q1" value="pokhlava" name="q1">Похвала</CustomOption>
     </div>
-  </WelcomeItem>
+  </QuestionItem>
 
-  <WelcomeItem id="question_2">
+  <QuestionItem id="question_2">
     <template #icon>
       <SupportIcon :active="!!form.q2" />
     </template>
@@ -76,9 +84,9 @@ watch(
       >
       <CustomOption v-model="form.q2" value="hotdog" name="q2">На сосиску в тесте</CustomOption>
     </div>
-  </WelcomeItem>
+  </QuestionItem>
 
-  <WelcomeItem id="question_3">
+  <QuestionItem id="question_3">
     <template #icon>
       <SupportIcon :active="!!form.q3" />
     </template>
@@ -110,9 +118,9 @@ watch(
         Doris Day - Whatever Will Be</CustomOption
       >
     </div>
-  </WelcomeItem>
+  </QuestionItem>
 
-  <WelcomeItem id="question_4">
+  <QuestionItem id="question_4">
     <template #icon>
       <SupportIcon :active="!!form.q4" />
     </template>
@@ -131,26 +139,26 @@ watch(
         >Про неудачный подкат</CustomOption
       >
     </div>
-  </WelcomeItem>
+  </QuestionItem>
 
-  <WelcomeItem id="question_5">
+  <QuestionItem id="question_5">
     <template #icon>
       <SupportIcon :active="!!form.q5" />
     </template>
     <template #heading>Как зовут спортсмена?</template>
-
+    <img class="image spacer" src="../assets/images/dog.jpeg" alt="question 1" />
     <div class="options spacer">
       <CustomOption v-model="form.q5" value="quakin" name="q5">Геннадий Квакин</CustomOption>
       <CustomOption v-model="form.q5" value="bublik" name="q5">Александр Бублик</CustomOption>
       <CustomOption v-model="form.q5" value="shirinin" name="q5">Вадим Ширинкин</CustomOption>
     </div>
-  </WelcomeItem>
-  <WelcomeItem id="question_6">
+  </QuestionItem>
+  <QuestionItem id="question_6">
     <template #icon>
       <SupportIcon :active="!!form.q6" />
     </template>
     <template #heading>Где мы встретились впервые?</template>
-
+    <img class="image spacer" src="../assets/images/wedding.jpeg" alt="question 1" />
     <div class="options spacer">
       <CustomOption v-model="form.q6" value="kavaler_party" name="q6"
         >На анонимной встрече поклонников глухих кавалеров</CustomOption
@@ -162,8 +170,8 @@ watch(
         >На мастерклассе по использованию золота в интерьере</CustomOption
       >
     </div>
-  </WelcomeItem>
-  <WelcomeItem id="question_7">
+  </QuestionItem>
+  <QuestionItem id="question_7">
     <template #icon>
       <SupportIcon :active="!!form.q7" />
     </template>
@@ -174,8 +182,8 @@ watch(
       <CustomOption v-model="form.q7" value="answer 2" name="q7">answer 2</CustomOption>
       <CustomOption v-model="form.q7" value="answer 3" name="q7">answer 3</CustomOption>
     </div>
-  </WelcomeItem>
-  <WelcomeItem id="question_8">
+  </QuestionItem>
+  <QuestionItem id="question_8">
     <template #icon>
       <SupportIcon :active="!!form.q8" />
     </template>
@@ -186,8 +194,8 @@ watch(
       <CustomOption v-model="form.q8" value="answer 2" name="q8">answer 2</CustomOption>
       <CustomOption v-model="form.q8" value="answer 3" name="q8">answer 3</CustomOption>
     </div>
-  </WelcomeItem>
-  <WelcomeItem id="question_9">
+  </QuestionItem>
+  <QuestionItem id="question_9">
     <template #icon>
       <SupportIcon :active="!!form.q9" />
     </template>
@@ -198,7 +206,15 @@ watch(
       <CustomOption v-model="form.q9" value="answer 2" name="q9">answer 2</CustomOption>
       <CustomOption v-model="form.q9" value="answer 3" name="q9">answer 3</CustomOption>
     </div>
-  </WelcomeItem>
+  </QuestionItem>
+  <div class="reset-buttons">
+    <button class="button-first" v-if="restart === false" @click="restart = true">
+      Начать сначала?
+    </button>
+    <button class="button-second" v-if="restart === true" @click="resetStorage()">
+      Нажми еще раз для подтверждения
+    </button>
+  </div>
 </template>
 
 <style scoped>
@@ -229,5 +245,26 @@ watch(
   border: 1px solid black;
   border-radius: 3px;
   background-color: rgb(255, 230, 251);
+}
+.reset-buttons {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-first {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid rgb(156, 100, 147);
+  color: rgb(156, 100, 147);
+}
+
+.button-second {
+  border: 2px solid rgb(156, 100, 147);
+  border-radius: 3px;
+  background-color: rgb(216, 182, 211);
+  border-bottom: 2px solid rgb(156, 100, 147);
+  color: white;
 }
 </style>
