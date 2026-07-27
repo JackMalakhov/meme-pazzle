@@ -63,6 +63,21 @@ const answersCount = computed(() => store?.answersCount ?? 0)
     display: flex;
     align-items: center;
   }
+
+  .field {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .quares {
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .quares {
+    width: calc(100vw - 4em);
+  }
 }
 .field {
   position: relative;
@@ -86,10 +101,9 @@ const answersCount = computed(() => store?.answersCount ?? 0)
 .quares {
   position: absolute;
   display: grid;
+  aspect-ratio: 1 / 1;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: calc(100vw - 4em);
-  height: calc(100vw - 4em);
 }
 .white-square {
   background-color: rgb(216, 182, 211);

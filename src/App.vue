@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
 import heading from './components/CongratulationsHeading.vue'
+import AboutView from './views/AboutView.vue'
+import HomeView from './views/HomeView.vue'
 import { useQuestionsStore } from './stores/counter.ts'
 import { provide, onMounted } from 'vue'
 import type { QuestionsTypes } from './model/questions.types.ts'
+
 const store = useQuestionsStore()
 provide('store', store)
 onMounted(() => {
@@ -23,13 +25,21 @@ onMounted(() => {
       <heading msg="BIRTHDAY QUIZ!" />
 
       <nav>
-        <RouterLink to="/">Quiz</RouterLink>
-        <RouterLink to="/surprise">Сюрприз</RouterLink>
+        <a
+          :class="{ 'link-active': store.openedPage === 'quiz' }"
+          @click="store.updateOpenedPage('quiz')"
+          >Quiz</a
+        >
+        <a
+          :class="{ 'link-active': store.openedPage === 'surprise' }"
+          @click="store.updateOpenedPage('surprise')"
+          >Сюрприз</a
+        >
       </nav>
     </div>
   </header>
-
-  <RouterView />
+  <HomeView v-if="store.openedPage === 'quiz'" />
+  <AboutView v-if="store.openedPage === 'surprise'" />
 </template>
 
 <style scoped>
@@ -50,13 +60,9 @@ nav {
   margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
+.link-active {
   color: var(--color-text);
   border-bottom: 1px solid var(--color-border);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
@@ -74,6 +80,8 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
+    position: sticky;
+    top: 0;
   }
 
   .logo {

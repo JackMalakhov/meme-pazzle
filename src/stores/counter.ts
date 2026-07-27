@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import type { QuestionsTypes } from '@/model/questions.types'
 
 export const useQuestionsStore = defineStore('questions', () => {
+  const openedPage = ref<'quiz' | 'surprise'>('quiz')
+
   const userAnswers = ref<QuestionsTypes | undefined>(undefined)
   const rightAnswers = ref<QuestionsTypes>({
     q1: 'pakhlava',
@@ -27,5 +29,16 @@ export const useQuestionsStore = defineStore('questions', () => {
     userAnswers.value = answers
   }
 
-  return { userAnswers, rightAnswers, answersCount, updateUserAnswers }
+  const updateOpenedPage = (page: 'quiz' | 'surprise') => {
+    openedPage.value = page
+  }
+
+  return {
+    userAnswers,
+    rightAnswers,
+    answersCount,
+    updateUserAnswers,
+    openedPage,
+    updateOpenedPage,
+  }
 })
