@@ -2,9 +2,17 @@
 import { RouterLink, RouterView } from 'vue-router'
 import heading from './components/CongratulationsHeading.vue'
 import { useQuestionsStore } from './stores/counter.ts'
-import { provide } from 'vue'
+import { provide, onMounted } from 'vue'
+import type { QuestionsTypes } from './model/questions.types.ts'
 const store = useQuestionsStore()
 provide('store', store)
+onMounted(() => {
+  const value = localStorage.getItem('questions')
+  if (value) {
+    const parsedValues: QuestionsTypes = JSON.parse(value)
+    store?.updateUserAnswers(parsedValues)
+  }
+})
 </script>
 
 <template>
@@ -12,7 +20,7 @@ provide('store', store)
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <heading msg="CONGRATULATIONS!" />
+      <heading msg="QUIZ!" />
 
       <nav>
         <RouterLink to="/">Викторина</RouterLink>

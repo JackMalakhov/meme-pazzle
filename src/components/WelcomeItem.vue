@@ -3,7 +3,7 @@ defineProps<{
   id: string
 }>()
 const scrollIntoView = (id: string): void => {
-  document.getElementById(id)?.scrollIntoView()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 }
 </script>
 
@@ -13,7 +13,7 @@ const scrollIntoView = (id: string): void => {
       <slot name="icon"></slot>
     </i>
     <div class="details">
-      <h3>
+      <h3 class="heading">
         <slot name="heading"></slot>
       </h3>
       <slot></slot>
@@ -25,6 +25,10 @@ const scrollIntoView = (id: string): void => {
 .icon {
   position: sticky;
   top: 0;
+}
+
+.heading {
+  color: rgb(156, 100, 147);
 }
 
 .item {
