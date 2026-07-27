@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import heading from './components/CongratulationsHeading.vue'
-import AboutView from './views/AboutView.vue'
-import HomeView from './views/HomeView.vue'
+import Surprise from './views/SurpriseQrcode.vue'
+import Quiz from './views/QuizGame.vue'
 import { useQuestionsStore } from './stores/counter.ts'
 import { provide, onMounted } from 'vue'
 import type { QuestionsTypes } from './model/questions.types.ts'
@@ -38,8 +38,8 @@ onMounted(() => {
       </nav>
     </div>
   </header>
-  <HomeView v-if="store.openedPage === 'quiz'" />
-  <AboutView v-if="store.openedPage === 'surprise'" />
+  <Quiz v-if="store.openedPage === 'quiz'" />
+  <Surprise v-if="store.openedPage === 'surprise'" />
 </template>
 
 <style scoped>
@@ -66,6 +66,7 @@ nav {
 }
 
 nav a {
+  cursor: pointer;
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
