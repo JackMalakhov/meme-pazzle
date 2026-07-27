@@ -34,12 +34,13 @@ const scrollIntoView = (id: string): void => {
 .item {
   margin-top: 2rem;
   display: flex;
+  gap: 1em;
   position: relative;
 }
 
 .details {
   flex: 1;
-  margin-left: 1rem;
+  margin-right: 32px;
 }
 
 i {

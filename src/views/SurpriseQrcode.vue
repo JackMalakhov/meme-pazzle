@@ -76,7 +76,7 @@ const answersCount = computed(() => store?.answersCount ?? 0)
 }
 @media (max-width: 1024px) {
   .quares {
-    width: calc(100vw - 4em);
+    width: calc(100vw - 2em);
   }
 }
 .field {

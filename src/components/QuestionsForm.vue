@@ -91,7 +91,7 @@ watch(
       <SupportIcon :active="!!form.q3" />
     </template>
     <template #heading>Что за песня?</template>
-    <div class="spacer">🚗🛣️🪾🏘️♾️🌝🚪🧿🪬👹🧌😈🌊😢❓</div>
+    <div class="spacer" style="font-size: 2em">🚗🛣️🪾🏘️♾️🌝🚪🧿🪬👹🧌😈🌊😢❓</div>
     <div class="options spacer">
       <CustomOption v-model="form.q3" value="pixies_que_sera_sera" name="q3">
         <template #option_icon>
