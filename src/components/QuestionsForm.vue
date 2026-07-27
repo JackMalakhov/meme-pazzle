@@ -169,6 +169,7 @@ watch(
 <style scoped>
 .options {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 .image {

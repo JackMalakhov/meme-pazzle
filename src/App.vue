@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import heading from './components/CongratulationsHeading.vue'
 import { useQuestionsStore } from './stores/counter.ts'
 import { provide } from 'vue'
 const store = useQuestionsStore()
@@ -12,7 +12,7 @@ provide('store', store)
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="CONGRATULATIONS!" />
+      <heading msg="CONGRATULATIONS!" />
 
       <nav>
         <RouterLink to="/">Викторина</RouterLink>

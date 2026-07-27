@@ -32,6 +32,7 @@ const model = defineModel()
   border-radius: 5px;
   position: relative;
   outline: none;
+  white-space: nowrap;
   transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
