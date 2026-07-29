@@ -18,6 +18,7 @@ const answersCount = computed(() => store?.answersCount ?? 0)
       /></a>
 
       <div class="quares" v-if="answersCount !== 9">
+        <!-- 1 top left -->
         <div
           :class="{
             'white-square': true,
@@ -25,28 +26,73 @@ const answersCount = computed(() => store?.answersCount ?? 0)
             'white-square-transparent': answersCount > 0,
           }"
         ></div>
-        <div :class="{ 'white-square': true, 'white-square-transparent': answersCount > 1 }"></div>
+        <!-- 2 top -->
         <div
           :class="{
             'white-square': true,
+            'top-left': answersCount > 0,
+            'white-square-transparent': answersCount > 1,
+          }"
+        ></div>
+        <!-- 3 top right -->
+        <div
+          :class="{
+            'white-square': true,
+            'top-left': answersCount > 1,
             'top-right': true,
             'white-square-transparent': answersCount > 2,
           }"
         ></div>
-        <div :class="{ 'white-square': true, 'white-square-transparent': answersCount > 3 }"></div>
-        <div :class="{ 'white-square': true, 'white-square-transparent': answersCount > 4 }"></div>
-        <div :class="{ 'white-square': true, 'white-square-transparent': answersCount > 5 }"></div>
+        <!-- 4  left -->
+        <div
+          :class="{
+            'white-square': true,
+            'top-left': answersCount > 0,
+            'white-square-transparent': answersCount > 3,
+          }"
+        ></div>
+        <!-- 5  center -->
+        <div
+          :class="{
+            'white-square': true,
+            'top-left': answersCount > 3,
+            'white-square-transparent': answersCount > 4,
+          }"
+        ></div>
+        <!-- 6  right -->
+        <div
+          :class="{
+            'white-square': true,
+            'top-left': answersCount > 4,
+            'top-right': answersCount > 2,
+            'white-square-transparent': answersCount > 5,
+          }"
+        ></div>
+        <!-- 7  bottom left -->
         <div
           :class="{
             'white-square': true,
             'bottom-left': true,
+            'top-left': answersCount > 3,
             'white-square-transparent': answersCount > 6,
           }"
         ></div>
-        <div :class="{ 'white-square': true, 'white-square-transparent': answersCount > 7 }"></div>
+        <!-- 8 bottom  -->
         <div
           :class="{
             'white-square': true,
+            'top-left': answersCount > 6,
+            'bottom-left': answersCount > 6,
+            'white-square-transparent': answersCount > 7,
+          }"
+        ></div>
+        <!-- 9 bottom right  -->
+        <div
+          :class="{
+            'white-square': true,
+            'top-left': answersCount > 7,
+            'bottom-left': answersCount > 7,
+            'top-right': answersCount > 5,
             'bottom-right': true,
             'white-square-transparent': answersCount > 8,
           }"
@@ -85,17 +131,17 @@ const answersCount = computed(() => store?.answersCount ?? 0)
 }
 
 .top-left {
-  border-radius: 5px 0px 0px 0px;
+  border-top-left-radius: 5px;
 }
 
 .top-right {
-  border-radius: 0px 5px 0px 0px;
+  border-top-right-radius: 5px;
 }
 .bottom-left {
-  border-radius: 0px 0px 0px 5px;
+  border-bottom-left-radius: 5px;
 }
 .bottom-right {
-  border-radius: 0px 0px 5px 0px;
+  border-bottom-right-radius: 5px;
 }
 
 .quares {

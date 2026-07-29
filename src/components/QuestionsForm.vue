@@ -61,7 +61,7 @@ watch(
       <SupportIcon :active="!!form.q1" />
     </template>
     <template #heading>Как это называется?</template>
-    <img class="image spacer" src="../assets/images/pahlava.png" alt="word" />
+    <img class="image spacer" src="../assets/images/pakhlava2.png" alt="word" />
     <div class="options spacer">
       <CustomOption v-model="form.q1" value="pakhvala" name="q1">Пахвала</CustomOption>
       <CustomOption v-model="form.q1" value="pakhlava" name="q1">Пахлава</CustomOption>
